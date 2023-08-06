@@ -23,36 +23,6 @@
                             <div id="EntryTag">
                                 标签: <?php $this->tags(', ', true, 'none'); ?>
                             </div>
-                            <div id="blog_post_info">
-                                <div id="green_channel">
-                                    <?php $digg = $this->hidden ? array('digg' => 0, 'recording' => true) : getDiggNum($this->cid); ?>
-                                    <?php $bury = $this->hidden ? array('bury' => 0, 'recording' => true) : getBuryNum($this->cid); ?>
-                                    <a href="javascript:void(0);" id="green_channel_digg" onclick="digg('<?php $this->permalink(); ?>', <?php echo $this->cid; ?>)">推荐该文(<?php echo $digg['digg']; ?>)</a>
-                                    <a id="green_channel_follow" onclick="follow();" href="javascript:void(0);">关注我</a>
-                                    <a id="green_channel_wechat" href="javascript:void(0);" title="打赏博主" onclick="sponsor()"></a>
-                                </div>
-                                <div id="author_profile">
-                                    <div id="author_profile_info" class="author_profile_info">
-                                            <!-- 作者信息 -->
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div id="author_profile_honor"></div>
-                                    <div id="author_profile_follow" class="follow-tip">
-                                                <!-- 加关注 -->
-                                    </div>
-                                </div>
-                                <div id="div_digg">
-                                    <div class="diggit" onclick="digg('<?php $this->permalink(); ?>', <?php echo $this->cid; ?>)">
-                                        <span class="diggnum" id="digg_count"><?php echo $digg['digg']; ?></span>
-                                    </div>
-                                    <div class="buryit" onclick="bury('<?php $this->permalink(); ?>', <?php echo $this->cid; ?>)">
-                                        <span class="burynum" id="bury_count"><?php echo $bury['bury']; ?></span>
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="diggword" id="digg_tips">
-                                    </div>
-                                </div>
-                            </div>
                             <div class="clear"></div>
                             <div id="post_next_prev">
                                 <a class="p_n_p_prefix">« </a> 上一篇： <?php $this->thePrev('%s', '我也是有上限的哦,(✿◡‿◡)'); ?> </a>
@@ -61,7 +31,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="postDesc">posted @
+                    <div class="hidden">
+                      <div class="postDesc">posted @
                         <span id="post-date"><?php $this->date("Y-m-d H:i:s"); ?></span>
                         <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author(); ?></a>
                         阅读(<span id="post_view_count"><?php getPostView($this) ?></span>)
@@ -69,6 +40,7 @@
                         <?php if($this->user->hasLogin()) :?>
                             <a href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid;?>" target="_blank">编辑</a>
                         <?php endif;?>
+                      </div>
                     </div>
                 </div>
             </div><!--end: topics 文章、评论容器-->
